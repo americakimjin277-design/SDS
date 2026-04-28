@@ -1,71 +1,65 @@
-export default function Home() {
+ "use client";
+import React, { useState } from 'react';
+
+export default function SDSPlatform() {
+  const [showSignup, setShowSignup] = useState(false);
+
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#f2f3f5",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "24px",
-        fontFamily:
-          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif',
-      }}
-    >
-      <section
-        style={{
-          width: "100%",
-          maxWidth: "760px",
-          textAlign: "center",
-          background: "rgba(255, 255, 255, 0.72)",
-          border: "1px solid rgba(255, 255, 255, 0.85)",
-          borderRadius: "24px",
-          padding: "72px 40px",
-          boxShadow: "0 16px 40px rgba(18, 26, 33, 0.08)",
-          backdropFilter: "blur(4px)",
-        }}
-      >
-        <p
-          style={{
-            margin: 0,
-            fontSize: "0.85rem",
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-            color: "#6b7280",
-            fontWeight: 700,
-          }}
-        >
-          SDS PLATFORM
-        </p>
-        <h1
-          style={{
-            margin: "20px 0 36px",
-            fontSize: "clamp(2rem, 5vw, 3.6rem)",
-            lineHeight: 1.15,
-            color: "#111827",
-            fontWeight: 800,
-          }}
-        >
-          SDS: 소설의 새로운 기준
-        </h1>
-        <button
-          type="button"
-          style={{
-            border: "none",
-            borderRadius: "999px",
-            padding: "14px 34px",
-            fontSize: "1rem",
-            fontWeight: 700,
-            color: "#1f2937",
-            background: "#c7ebc4",
-            cursor: "pointer",
-            boxShadow: "0 8px 20px rgba(118, 170, 111, 0.25)",
-            transition: "transform 0.2s ease, box-shadow 0.2s ease",
-          }}
-        >
-          시작하기
-        </button>
-      </section>
-    </main>
+    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
+      {!showSignup ? (
+        /* 메인 화면 */
+        <div className="text-center space-y-8 animate-in fade-in duration-1000">
+          <div className="space-y-2">
+            <h1 className="text-6xl font-black tracking-tighter text-slate-900">
+              S<span className="text-green-600">D</span>S
+            </h1>
+            <p className="text-slate-500 font-medium">Connect. Build. Create.</p>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-800 leading-tight">
+            세상을 연결하는 <br />
+            <span className="text-green-600">멋진 공간</span>에 오신 것을 환영합니다
+          </h2>
+
+          <button 
+            onClick={() => setShowSignup(true)}
+            className="px-10 py-4 bg-green-600 text-white text-xl font-bold rounded-full hover:bg-green-700 transform hover:scale-105 transition-all shadow-xl"
+          >
+            시작하기
+          </button>
+        </div>
+      ) : (
+        /* 회원가입 화면 (멋진 곳에 온 느낌!) */
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl p-8 space-y-8 animate-in slide-in-from-bottom-10 duration-700">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold text-slate-900">SDS</h1>
+            <p className="mt-4 text-xl font-semibold text-slate-700">
+              우리 <span className="text-green-600">SDS 멤버</span>가 되어주세요!
+            </p>
+            <p className="text-slate-500 mt-2">당신의 아이디어가 시작되는 곳입니다.</p>
+          </div>
+
+          <div className="space-y-4">
+            <button className="w-full py-4 bg-yellow-400 text-black font-bold rounded-xl hover:bg-yellow-500 transition-colors">
+              카카오로 1초 만에 시작하기
+            </button>
+            <button className="w-full py-4 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl hover:bg-slate-50 transition-colors">
+              구글로 계속하기
+            </button>
+            <div className="relative py-4">
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-200"></div></div>
+              <div className="relative flex justify-center text-sm"><span className="px-2 bg-white text-slate-400">또는</span></div>
+            </div>
+            <button className="w-full py-4 text-green-600 font-semibold hover:underline">
+              이메일로 가입하기
+            </button>
+          </div>
+
+          <p className="text-center text-sm text-slate-400">
+            가입하면 SDS의 이용약관에 동의하게 됩니다.
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
